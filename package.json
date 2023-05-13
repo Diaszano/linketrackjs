@@ -1,0 +1,37 @@
+{
+  "name": "linketrack",
+  "version": "1.0.0",
+  "description": "Uma interface amigável para a API de rastreamento de encomendas dos Correios desenvolvida pela Link & Track.",
+  "main": "dist/linketrack.js",
+  "types": "dist/linketrack.d.ts",
+  "scripts": {
+    "test": "vitest",
+    "development": "clear && npx ts-node src/linketrack.ts",
+    "build": "tsc --declaration"
+  },
+  "keywords": [
+    "correios",
+    "rastreio",
+    "linketrack",
+    "link&track"
+  ],
+  "author": {
+    "name": "Lucas Dias",
+    "url": "https://github.com/Diaszano"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.1.4",
+    "@typescript-eslint/eslint-plugin": "^5.59.5",
+    "@typescript-eslint/parser": "^5.59.5",
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.31.0",
+    "vitest-mock-extended": "^1.1.3"
+  }
+}
