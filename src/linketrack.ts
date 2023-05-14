@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import LinketrackResponse from './interface/LinketrackResponse';
-import LinketrackError from './interface/LinketrackError';
+import LinketrackError from './errors/LinketrackError';
 
 export default class linketrack {
   constructor(private readonly user: string, private readonly token: string) {}
