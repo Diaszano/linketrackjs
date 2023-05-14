@@ -1,5 +1,5 @@
 {
-  "name": "linketrack",
+  "name": "linketrackjs",
   "version": "1.0.0",
   "description": "Uma interface amigável para a API de rastreamento de encomendas dos Correios desenvolvida pela Link & Track.",
   "main": "dist/linketrack.js",
