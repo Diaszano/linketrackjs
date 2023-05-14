@@ -27,4 +27,26 @@ describe('linketrack', async (): Promise<void> => {
       expectedResponse,
     );
   });
+  it('Deve rastrear duas encomendas', async (): Promise<void> => {
+    const linketrack = new Linketrack(
+      process.env.LINKETRACK_USER || '',
+      process.env.LINKETRACK_TOKEN || '',
+    );
+
+    const response: Partial<LinketrackResponse> = {
+      codigo: 'LX002249507BR',
+      servico: 'PAC - Encomenda Econômica',
+      quantidade: 0,
+      eventos: [],
+    };
+
+    const expectedResponse = new Array<Partial<LinketrackResponse>>(
+      response,
+      response,
+    );
+
+    expect(
+      linketrack.trackAll('LX002249507BR', 'LX002249507BR'),
+    ).resolves.toMatchObject(expectedResponse);
+  });
 });
