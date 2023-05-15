@@ -10,7 +10,7 @@
     "url": "https://github.com/Diaszano"
   },
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "test": "vitest",
     "development": "clear && npx ts-node src/linketrack.ts",
