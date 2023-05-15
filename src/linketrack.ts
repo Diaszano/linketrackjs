@@ -2,7 +2,12 @@ import axios, { AxiosError } from 'axios';
 import LinketrackResponse from './interface/LinketrackResponse';
 import LinketrackError from './errors/LinketrackError';
 
-export default class linketrack {
+export default class Linketrack {
+  /**
+   * Construtor da classe Linketrack.
+   * @param {string} user - Nome de usuário para autenticação na API do LINK & TRACK.
+   * @param {string} token - Token de autenticação para a API do LINK & TRACK.
+   */
   constructor(private readonly user: string, private readonly token: string) {}
 
   /**
