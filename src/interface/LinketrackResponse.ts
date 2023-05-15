@@ -1,3 +1,6 @@
+/**
+ * Interface que representa um evento de rastreamento.
+ */
 interface Evento {
   data: string;
   hora: string;
@@ -6,6 +9,9 @@ interface Evento {
   subStatus: Array<string>;
 }
 
+/**
+ * Interface que representa a resposta do rastreamento.
+ */
 export default interface LinketrackResponse {
   codigo: string;
   servico: string;
