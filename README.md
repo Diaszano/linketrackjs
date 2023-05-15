@@ -65,16 +65,16 @@ desfrutar de todas as vantagens oferecidas pelo serviço [Link & Track](https://
 Para utilizar o cache em sua aplicação, é necessário importar a classe **linketrack** da biblioteca:
 
 ```typescript
-import linketrack from 'linketrackjs';
+import Linketrack from 'linketrackjs';
 ```
 
 Em seguida, é possível criar uma instância da classe **linketrack** e utilizá-la:
 
 ```typescript
-const tracker = new linketrack('user', 'token');
+const linketrack = new Linketrack('user', 'token');
 
 // Rastreie uma encomenda
-const track = await tracker.track('CODIGO');
+const track = await linketrack.track('CODIGO');
 
 // Veja os dados do rastreio
 console.log(track);
@@ -83,10 +83,10 @@ console.log(track);
 Também será possível rastrear mais de uma encomenda:
 
 ```typescript
-const tracker = new linketrack('user', 'token');
+const linketrack = new Linketrack('user', 'token');
 
 // Rastreie uma encomenda
-const track = await tracker.trackAll('CODIGO1', 'CODIGO2', 'CODIGO3');
+const track = await linketrack.trackAll('CODIGO1', 'CODIGO2', 'CODIGO3');
 
 // Veja os dados do rastreio
 console.log(track);
