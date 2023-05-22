@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Production
 
 on:
   push:
@@ -18,10 +18,6 @@ jobs:
         env:
           LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
           LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
-          OI: ${{ secrets.OI }}
-                - name: Print OI variable
-                run:
-                  echo "OI: ${{ secrets.OI }}"
 
   publish-npm:
     needs: build
