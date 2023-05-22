@@ -19,7 +19,9 @@ jobs:
           LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
           LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
           OI: ${{ secrets.OI }}
-                - echo "OI: $OI"
+                - name: Print OI variable
+                run:
+                  echo "OI: ${{ secrets.OI }}"
 
   publish-npm:
     needs: build
