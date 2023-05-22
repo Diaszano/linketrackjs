@@ -13,9 +13,9 @@
   "version": "1.1.0",
   "scripts": {
     "test": "vitest",
-    "development": "clear && npx ts-node src/linketrack.ts",
-    "build": "tsc --declaration",
-    "build:docs": "typedoc src/linketrack.ts"
+    "build": "tsc",
+    "build:docs": "typedoc src/linketrack.ts",
+    "development": "clear && npx ts-node src/linketrack.ts"
   },
   "keywords": [
     "correios",
@@ -46,5 +46,11 @@
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.31.0",
     "vitest-mock-extended": "^1.1.3"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/linketrack.d.ts",
+      "default": "./dist/inlinketrackdex.js"
+    }
   }
 }
