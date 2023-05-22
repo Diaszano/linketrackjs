@@ -13,13 +13,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
-          LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
       - run: npm ci
       - run: npm run test
+        env:
+          LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
+          LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
 
   publish-npm:
-    #     needs: build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -27,11 +28,10 @@ jobs:
         with:
           node-version: 18.x
           registry-url: https://registry.npmjs.org/
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-          LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
-          LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
       - run: npm ci
       - run: npm run build
       - run: npm run build:docs
       - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
       - run: npm clean
