@@ -13,13 +13,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18.x
-      - run: npm ci
-      - run: npm run test
-        env:
           LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
           LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
-
-
+      - run: npm ci
+      - run: npm run test
 
   publish-npm:
     #     needs: build
@@ -30,12 +27,11 @@ jobs:
         with:
           node-version: 18.x
           registry-url: https://registry.npmjs.org/
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
+          LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
       - run: npm ci
       - run: npm run build
       - run: npm run build:docs
       - run: npm publish
       - run: npm clean
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-          LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
-          LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
