@@ -17,6 +17,11 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
+      - run: npm run test
+        env:
+          LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
+          LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
+
 
   publish-npm:
     needs: build
@@ -28,6 +33,10 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: npm ci
+      - run: npm run build
+      - run: npm run build:docs
       - run: npm publish
+      - run: npm clean
+
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
