@@ -10,12 +10,13 @@
     "url": "https://github.com/Diaszano"
   },
   "license": "MIT",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "scripts": {
     "test": "vitest",
     "development": "clear && npx ts-node src/linketrack.ts",
     "build": "tsc --declaration",
-    "build:docs": "typedoc src/linketrack.ts"
+    "build:docs": "typedoc src/linketrack.ts",
+    "clean": "git clean -fX .eslintcache docs/build/ dist/"
   },
   "keywords": [
     "correios",
