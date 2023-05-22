@@ -3,12 +3,16 @@ import LinketrackResponse from './interface/LinketrackResponse';
 import LinketrackError from './errors/LinketrackError';
 
 export default class Linketrack {
+  private regexCode: RegExp;
+
   /**
    * Construtor da classe Linketrack.
    * @param {string} user - Nome de usuário para autenticação na API do LINK & TRACK.
    * @param {string} token - Token de autenticação para a API do LINK & TRACK.
    */
-  constructor(private readonly user: string, private readonly token: string) {}
+  constructor(private readonly user: string, private readonly token: string) {
+    this.regexCode = new RegExp(/[a-z]{2}[0-9]{9}[a-z]{2}/);
+  }
 
   /**
    * Realiza o rastreamento de um código fornecido.
@@ -33,12 +37,24 @@ export default class Linketrack {
   }
 
   /**
+   * Realiza a verificação se o código está no padrão devido.
+   * @param {string} code - O código de rastreio fornecido pelos Correios.
+   * @returns {boolean} Retorna se o código é valido ou não.
+   */
+  private codeVerification(code: string): boolean {
+    return this.regexCode.test(code.toLowerCase());
+  }
+
+  /**
    * Realiza uma requisição à API do LINK & TRACK para obter o rastreamento de um código.
    * @param {string} code - O código de rastreio fornecido pelos Correios.
    * @returns {Promise<LinketrackResponse>} Uma Promise que contém a resposta do rastreamento.
    * @throws {LinketrackError} Lança um erro personalizado caso ocorra um erro durante a requisição.
    */
   private async request(code: string): Promise<LinketrackResponse> {
+    if (!this.codeVerification(code)) {
+      throw new LinketrackError(`O Código ${code} de rastreio inválido!`);
+    }
     try {
       const response = await axios.get(this.url(code));
       return response.data;

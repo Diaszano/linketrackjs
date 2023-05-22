@@ -49,4 +49,13 @@ describe('linketrack', async (): Promise<void> => {
       linketrack.trackAll('LX002249507BR', 'LX002249507BR'),
     ).resolves.toMatchObject(expectedResponse);
   });
+  it('Deve dar erro de código inválido', async (): Promise<void> => {
+    const linketrack = new Linketrack(
+      process.env.LINKETRACK_USER || '',
+      process.env.LINKETRACK_TOKEN || '',
+    );
+    expect(linketrack.track('LX0022495078R')).rejects.toThrow(
+      'O Código LX0022495078R de rastreio inválido!',
+    );
+  });
 });
