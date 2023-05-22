@@ -18,6 +18,8 @@ jobs:
         env:
           LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
           LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
+          OI: ${{ secrets.OI }}
+                - echo "OI: $OI"
 
   publish-npm:
     needs: build
