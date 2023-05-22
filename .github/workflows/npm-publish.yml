@@ -16,11 +16,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm ci
-      - run: npm run test
-        env:
           LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
           LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
+      - run: npm ci
+      - run: npm run test
+          
 
 
   publish-npm:
