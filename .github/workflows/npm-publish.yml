@@ -1,4 +1,4 @@
-name: Production
+name: Node.js Package
 
 on:
   push:
@@ -9,10 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello world
-        run: echo Hello world $FIRST_NAME!
-        env:
-          $FIRST_NAME: ${{ secrets.FIRST_NAME }}
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -20,8 +16,8 @@ jobs:
       - run: npm ci
       - run: npm run test
         env:
-          LINKETRACK_USER: teste
-          LINKETRACK_TOKEN: 1abcd00b2731640e886fb41a8a9671ad1434c599dbaa0a0de9a5aa619f29a83f
+          LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
+          LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
 
 
   publish-npm:
