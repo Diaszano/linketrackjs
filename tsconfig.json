@@ -1,22 +1,28 @@
 {
-  "include": [
-    "./src"
-  ],
   "compilerOptions": {
-    "lib": [
-      "DOM",
-      "ESNext"
-    ],
+    "baseUrl": "src",
+    "esModuleInterop": false,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "sourceMap": true,
     "strict": true,
-    "target": "ES2019",
-    "module": "CommonJS",
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "declaration": true,
-    "skipLibCheck": true,
-    "noEmitOnError": true,
-    "removeComments": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "target": "es2016",
+    "paths": {
+      "@/*": ["*"]
+    }
+  },
+  "exclude": [
+    "**/*.spec.ts"
+  ]
 }

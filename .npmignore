@@ -1,0 +1,28 @@
+# Diretórios de configuração do VSCode
+.vscode/
+
+# Configurações específicas do WebStorm
+.idea/
+
+# Arquivos e diretórios do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração local
+.env
+.env.local
+.env.*.local
+
+# Arquivos TypeScript e diretórios de origem
+src/
+*.ts
+*.tsx
+
+# Diretório de saída do TypeScript
+dist/
+
+# Arquivos de teste
+test/
+*.spec.ts
+*.test.ts
+*.test.tsx
