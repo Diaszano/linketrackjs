@@ -16,7 +16,13 @@
     "clean": "git clean -fX .eslintcache docs/build/ dist/",
     "build": "tsc --declaration",
     "build:docs": "typedoc src/linketrack.ts",
-    "development": "clear && npx ts-node src/linketrack.ts"
+    "development": "clear && npx ts-node src/linketrack.ts",
+    "husky:prepare": "husky install",
+    "formatter" : "npm run eslint:write && npm run prettier:write",
+    "prettier:check": "npx prettier --check 'src/**'",
+    "prettier:write": "prettier --write 'src/**'",
+    "eslint:check": "npx eslint 'src/**'",
+    "eslint:write": "npx eslint 'src/**' --fix"
   },
   "keywords": [
     "correios",
