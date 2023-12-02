@@ -1,6 +1,7 @@
 {
   "*.ts": [
     "npm run eslint:check",
-    "npm run prettier:check"
+    "npm run prettier:check",
+    "npm test"
   ]
 }
