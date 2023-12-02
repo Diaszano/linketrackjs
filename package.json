@@ -52,7 +52,6 @@
     "build:docs": "typedoc src/linketrack.ts",
     "format": "eslint 'src/**' --fix && prettier --write 'src/**'",
     "lint": "eslint 'src/**' && prettier --check 'src/**'",
-    "prepublishOnly": "npm run lint && npm test",
     "test": "vitest"
   },
   "types": "dist/linketrack.d.ts",
