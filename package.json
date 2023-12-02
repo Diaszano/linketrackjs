@@ -17,6 +17,7 @@
     "dotenv": "^16.3.1",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-security": "^1.7.1",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",
