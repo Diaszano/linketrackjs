@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
-    workflow_run:
-      workflows: ["Run Tests"]
-      types:
-        - completed
+  workflow_run:
+    workflows: ["Run Tests", "Code Quality Check"]
+    types:
+      - completed
 
 jobs:
   npm_deploy:

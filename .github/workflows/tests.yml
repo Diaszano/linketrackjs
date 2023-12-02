@@ -3,10 +3,6 @@ name: Run Tests
 on:
   pull_request:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Code Quality Check"]
-    types:
-      - completed
 
 jobs:
   run_tests:
@@ -31,3 +27,6 @@ jobs:
 
       - name: Run Code Tests
         run: npm test
+        env:
+          LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
+          LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}
