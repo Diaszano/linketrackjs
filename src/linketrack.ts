@@ -4,14 +4,18 @@ import LinketrackError from './errors/LinketrackError';
 
 export default class Linketrack {
   private regexCode: RegExp;
+  private readonly user: string;
+  private readonly token: string;
 
   /**
    * Construtor da classe Linketrack.
    * @param {string} user - Nome de usuário para autenticação na API do LINK & TRACK.
    * @param {string} token - Token de autenticação para a API do LINK & TRACK.
    */
-  constructor(private readonly user: string, private readonly token: string) {
+  constructor(user: string, token: string) {
     this.regexCode = new RegExp(/[a-z]{2}[0-9]{9}[a-z]{2}/);
+    this.user = user;
+    this.token = token;
   }
 
   /**
@@ -71,7 +75,6 @@ export default class Linketrack {
           }
         }
       }
-      console.error(error);
       throw new LinketrackError((error as Error).message);
     }
   }
