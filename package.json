@@ -50,8 +50,8 @@
   "scripts": {
     "build": "tsc && tsc-alias",
     "build:docs": "typedoc src/linketrack.ts",
-    "format": "npm run eslint:write && npm run prettier:write",
-    "lint": "npm run eslint:check && npm run prettier:check",
+    "format": "eslint 'src/**' --fix && prettier --write 'src/**'",
+    "lint": "eslint 'src/**' && prettier --check 'src/**'",
     "prepublishOnly": "npm run lint && npm test",
     "test": "vitest"
   },
