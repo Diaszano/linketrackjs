@@ -1,0 +1,42 @@
+name: NPM Deployment
+
+on:
+  push:
+    branches:
+      - main
+    workflow_run:
+      workflows: ["Run Tests"]
+      types:
+        - completed
+
+jobs:
+  npm_deploy:
+    name: Execute NPM Deployment
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+
+      - name: Set Up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install Project Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Generate Documentation
+        run: npm run build:docs
+
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
