@@ -1,0 +1,32 @@
+name: Run Tests
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  run_tests:
+    name: Execute Code Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+
+      - name: Set Up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install Project Dependencies
+        run: npm ci
+
+      - name: Run Code Tests
+        run: npm test
+        env:
+          LINKETRACK_USER: ${{secrets.LINKETRACK_USER}}
+          LINKETRACK_TOKEN: ${{secrets.LINKETRACK_TOKEN}}

@@ -1,13 +1,15 @@
 {
     "env": {
         "es2021": true,
-        "node": true,
-        "jest": true
+        "node": true
     },
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "prettier"
+    ],
+    "ignorePatterns": [
+        "*/**.spec.ts"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -16,8 +18,21 @@
         "project" : ["./tsconfig.json"]
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "security"
     ],
     "rules": {
+        "@typescript-eslint/no-empty-function": [
+            "error",
+            { "allow": ["constructors"] }
+        ],
+        "no-alert": "error",
+        "no-console": "error",
+        "no-eval": "error",
+        "no-process-exit": "error",
+        "no-unused-vars": "error",
+        "security/detect-buffer-noassert": "warn",
+        "security/detect-child-process": "warn",
+        "security/detect-non-literal-regexp": "warn"
     }
 }
