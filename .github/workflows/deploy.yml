@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_run:
-    workflows: ["Run Tests", "Code Quality Check"]
-    types:
-      - completed
 
 jobs:
   npm_deploy:
@@ -33,9 +29,6 @@ jobs:
 
       - name: Build Project
         run: npm run build
-
-      - name: Generate Documentation
-        run: npm run build:docs
 
       - name: Publish to NPM
         run: npm publish
