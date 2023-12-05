@@ -25,7 +25,7 @@ test/
 *.test.tsx
 
 # Development and Configuration Files
-.github
+.github/workflows
 .husky
 docs
 .eslintrc.json
