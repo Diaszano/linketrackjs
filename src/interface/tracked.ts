@@ -22,7 +22,7 @@ export interface Tracked {
   /**
    * Lista de eventos associados à encomenda.
    */
-  events: Event[];
+  events: TrackedEvent[];
 
   /**
    * Carimbo de tempo do pedido.
@@ -35,7 +35,7 @@ export interface Tracked {
   lastEvent: Date;
 }
 
-export interface Event {
+export interface TrackedEvent {
   /**
    * Data em que o evento foi criado.
    */

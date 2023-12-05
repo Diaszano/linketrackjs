@@ -25,7 +25,7 @@ export interface TrackedByLinkAndTrack {
   /**
    * Lista de eventos associados à encomenda.
    */
-  eventos: Event[];
+  eventos: TrackedEventByLinkAndTrack[];
 
   time: number;
   ultimo?: Date;
@@ -34,7 +34,7 @@ export interface TrackedByLinkAndTrack {
 /**
  * Interface que representa um evento associado a uma encomenda.
  */
-export interface Event {
+export interface TrackedEventByLinkAndTrack {
   /**
    * Data em que o evento foi criado.
    */
