@@ -38,7 +38,7 @@
     "linketrackjs"
   ],
   "license": "MIT",
-  "main": "dist/linketrack.js",
+  "main": "dist/linkAndTrack.js",
   "name": "linketrackjs",
   "repository": {
     "type": "git",
@@ -50,6 +50,6 @@
     "lint": "eslint 'src/**' && prettier --check 'src/**'",
     "test": "vitest"
   },
-  "types": "dist/linketrack.d.ts",
-  "version": "1.2.4"
+  "types": "dist/linkAndTrack.d.ts",
+  "version": "2.0.0"
 }
