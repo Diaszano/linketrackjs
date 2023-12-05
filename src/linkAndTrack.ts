@@ -93,7 +93,7 @@ export class LinkAndTrack {
       quantity: quantidade,
       events: eventos.map(this.convertEvent),
       time,
-      lastEvent: ultimo ?? new Date(),
+      lastEvent: ultimo ? new Date(ultimo) : new Date(),
     };
   }
 
