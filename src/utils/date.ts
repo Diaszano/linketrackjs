@@ -1,8 +1,8 @@
 /**
  * Converte uma string de data e uma string de hora para um objeto Date.
  *
- * @param date - A string representando a data (no formato DD/MM/YYYY).
- * @param hour - A string representando a hora (no formato HH:MM).
+ * @param {string} date - A string representando a data (no formato DD/MM/YYYY).
+ * @param {string} hour - A string representando a hora (no formato HH:MM).
  * @returns Um objeto Date representando a combinação de data e hora.
  */
 export function getDate(date: string, hour: string): Date {
