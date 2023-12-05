@@ -27,8 +27,15 @@ export interface TrackedByLinkAndTrack {
    */
   eventos: TrackedEventByLinkAndTrack[];
 
+  /**
+   * Carimbo de tempo do pedido.
+   */
   time: number;
-  ultimo?: Date;
+
+  /**
+   * Data do último evento.
+   */
+  ultimo?: string;
 }
 
 /**
