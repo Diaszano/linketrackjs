@@ -2,7 +2,7 @@
 <div align="center">
 
 <a href="https://github.com/Diaszano">
-    <img src="images/logo.svg" alt="logo" height="90" align="center">
+    <img src=".github/assets/logo.svg" alt="logo" height="90" align="center">
 </a>
 
 <h1 align="center">linketrackjs</h1>
