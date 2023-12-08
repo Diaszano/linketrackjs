@@ -10,6 +10,7 @@ import { InternalError } from '@/errors/internalError';
 import { UserError } from '@/errors/userError';
 import { RequestError } from '@/errors/requestError';
 import { getDate } from '@/utils/date';
+import { InvalidCodeError } from '@/errors/invalidCodeError';
 
 /**
  * Classe responsável por interagir com a API Link&Track.
@@ -58,7 +59,13 @@ export class LinkAndTrack {
    * @returns {Promise<Tracked>} Uma Promise que resolve para um objeto Tracked.
    */
   async track(code: string): Promise<Tracked> {
-    if (!this.checkCode(code)) {
+    try {
+      this.validateCode(code);
+
+      const tracked = await this.trackOrder(code);
+
+      return this.convertTracked(tracked);
+    } catch (_) {
       return {
         code,
         service: '',
@@ -69,10 +76,6 @@ export class LinkAndTrack {
         lastEvent: new Date(),
       };
     }
-
-    const tracked = await this.trackOrder(code);
-
-    return this.convertTracked(tracked);
   }
 
   /**
@@ -214,6 +217,18 @@ export class LinkAndTrack {
   private validateToken(): void {
     if (!this.checkToken(this.#token)) {
       throw new AuthorizationError(`Token inválido!`);
+    }
+  }
+
+  /**
+   * Valida o código de rastreamento.
+   *
+   * @throws {InvalidCodeError} Se o código for inválido.
+   * @private
+   */
+  private validateCode(code: string): void {
+    if (!this.checkCode(code)) {
+      throw new InvalidCodeError(`Código (${code}) é inválido!`);
     }
   }
 
