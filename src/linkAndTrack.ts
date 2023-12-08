@@ -174,10 +174,7 @@ export class LinkAndTrack {
     } catch (error) {
       if (error instanceof RequestError) {
         switch (error.statusCode) {
-          case 0:
-            throw new InternalError(
-              'Ocorreu um erro interno na API. Tente novamente mais tarde!',
-            );
+          case 401:
           case 403:
             throw new AuthorizationError(
               'Usuário sem autorização! Revise suas credenciais!',
@@ -186,7 +183,7 @@ export class LinkAndTrack {
             throw new UserError(
               'Você excedeu a quantidade de rastreios permitida por minuto.',
             );
-          case 500:
+          default:
             throw new InternalError(
               'Ocorreu um erro interno na API. Tente novamente mais tarde!',
             );
