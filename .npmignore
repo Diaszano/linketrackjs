@@ -1,34 +1,27 @@
-# Visual Studio Code and WebStorm Configuration
-.vscode/
-.idea/
+# Ignore files and folders for npm package
 
-# System Files and Directories
-.DS_Store
-Thumbs.db
-
-# Local Configuration Files
-.env
-.env.local
-.env.*.local
-
-# TypeScript Source Code
-src/
-*.tsx
-
-# Compiled JavaScript
-dist/
-
-# Test Files
-test/
-*.spec.ts
-*.test.ts
-*.test.tsx
-
-# Development and Configuration Files
+# GitHub actions
 .github/workflows
+
+# Husky configuration
 .husky
-docs
+
+# Node modules
+node_modules
+
+# Test files
+tests
+
+# Linter configurations
 .eslintrc.json
 .lintstagedrc.json
 .prettierrc.json
+
+# TypeScript configuration
 tsconfig.json
+
+# Vite configuration
+vite.config.ts
+
+# npm
+.npmignore
