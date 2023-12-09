@@ -6,9 +6,6 @@
   "bugs": {
     "url": "https://github.com/Diaszano/linketrackjs/issues"
   },
-  "dependencies": {
-    "axios": "^1.6.2"
-  },
   "description": "Uma interface amigável para a API de rastreamento de encomendas dos Correios desenvolvida pela Link & Track.",
   "devDependencies": {
     "@types/node": "^20.10.2",
@@ -41,7 +38,7 @@
     "linketrackjs"
   ],
   "license": "MIT",
-  "main": "dist/linketrack.js",
+  "main": "dist/linkAndTrack.js",
   "name": "linketrackjs",
   "repository": {
     "type": "git",
@@ -49,11 +46,10 @@
   },
   "scripts": {
     "build": "tsc && tsc-alias",
-    "build:docs": "typedoc src/linketrack.ts",
     "format": "eslint 'src/**' --fix && prettier --write 'src/**'",
     "lint": "eslint 'src/**' && prettier --check 'src/**'",
     "test": "vitest"
   },
-  "types": "dist/linketrack.d.ts",
-  "version": "1.2.4"
+  "types": "dist/linkAndTrack.d.ts",
+  "version": "2.0.0"
 }
