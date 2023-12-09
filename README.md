@@ -38,7 +38,7 @@ rastreamento de encomendas.
 A API do [Linketrack](https://linketrack.com/) oferece um conjunto de recursos poderosos para rastrear e obter
 informações sobre pacotes e envios, permitindo que desenvolvedores integrem esses recursos em suas aplicações.
 
-O **linketrackjs** busca fornecendo uma camada intermediária entre a API e os usuários finais.
+O **linketrackjs** busca fornecer uma camada intermediária entre a API e os usuários finais.
 Através dessa camada intermediária, o projeto irá simplificar o processo de integração e fornecer uma experiência mais
 amigável para os desenvolvedores que desejam incorporar os recursos de rastreamento em suas aplicações.
 
@@ -65,29 +65,15 @@ desfrutar de todas as vantagens oferecidas pelo serviço [Link & Track](https://
 Para utilizar o cache em sua aplicação, é necessário importar a classe **linketrack** da biblioteca:
 
 ```typescript
-import Linketrack from 'linketrackjs';
+import { LinkAndTrack } from 'linketrackjs';
 ```
 
-Em seguida, é possível criar uma instância da classe **linketrack** e utilizá-la:
+Em seguida, é possível criar uma instância da classe **linkAndTrack** e utilizá-la:
 
 ```typescript
-const linketrack = new Linketrack('user', 'token');
+const linkAndTrack = new LinkAndTrack('user', 'token');
 
-// Rastreie uma encomenda
-const track = await linketrack.track('CODIGO');
+const track = await linkAndTrack.track('CODIGO');
 
-// Veja os dados do rastreio
-console.log(track);
-```
-
-Também será possível rastrear mais de uma encomenda:
-
-```typescript
-const linketrack = new Linketrack('user', 'token');
-
-// Rastreie uma encomenda
-const track = await linketrack.trackAll('CODIGO1', 'CODIGO2', 'CODIGO3');
-
-// Veja os dados do rastreio
 console.log(track);
 ```
