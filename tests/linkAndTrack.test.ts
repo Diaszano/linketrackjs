@@ -9,6 +9,7 @@ import { describe, expect, it } from 'vitest';
 import { LinkAndTrack } from '@/linkAndTrack';
 import { AuthorizationError } from '@/errors/authorizationError';
 import { Tracked } from '@/interface/tracked';
+import { InvalidCodeError } from '@/errors/invalidCodeError';
 
 /**
  * Descreve e executa testes relacionados à inicialização da classe LinkAndTrack.
@@ -77,6 +78,15 @@ describe('LinkAndTrack - Rastreamento', async (): Promise<void> => {
   });
 
   /**
+   * Testa o rastreamento de um código de rastreio inválido.
+   */
+  it('Deve retornar um erro para o código inválido', async (): Promise<void> => {
+    await expect(linkAndTrack.trackOrThrow(invalidCode)).rejects.toThrowError(
+      InvalidCodeError,
+    );
+  });
+
+  /**
    * Testa o rastreamento de um código de rastreio válido.
    */
   it('Deve retornar um objeto rastreado com valores dinâmicos para um código válido', async (): Promise<void> => {
@@ -88,6 +98,9 @@ describe('LinkAndTrack - Rastreamento', async (): Promise<void> => {
     };
 
     await expect(linkAndTrack.track(validCode)).resolves.toMatchObject(
+      expectedValue,
+    );
+    await expect(linkAndTrack.trackOrThrow(validCode)).resolves.toMatchObject(
       expectedValue,
     );
   });
