@@ -79,6 +79,25 @@ export class LinkAndTrack {
   }
 
   /**
+   * Rastreia uma encomenda na API do Link&Track utilizando o código fornecido.
+   *
+   *
+   * @param {string} code - O código de rastreio da encomenda.
+   * @returns {Promise<Tracked>} Uma Promise que resolve para um objeto Tracked.
+   * @throws {InvalidCodeError} Se o código de rastreio for inválido.
+   * @throws {RequestError} Se ocorrer um erro durante a requisição à API do Link&Track.
+   * @throws {InternalError} Se ocorrer um erro interno na API do Link&Track.
+   * @throws {AuthorizationError} Se o usuário não tiver autorização para acessar a API do Link&Track.
+   * @throws {UserError} Se o usuário exceder a quantidade de rastreios permitida por minuto.
+   * @throws {UnexpectedError} Se ocorrer um erro inesperado durante o processamento.
+   */
+  async trackOrThrow(code: string): Promise<Tracked> {
+    this.validateCode(code);
+    const tracked = await this.trackOrder(code);
+    return this.convertTracked(tracked);
+  }
+
+  /**
    * Converte um objeto TrackedByLinkAndTrack para o formato Tracked.
    *
    * @param {TrackedByLinkAndTrack} tracked - O objeto a ser convertido.
