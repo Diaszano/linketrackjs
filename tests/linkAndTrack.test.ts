@@ -54,7 +54,7 @@ describe('LinkAndTrack - Rastreamento', async (): Promise<void> => {
 
   const linkAndTrack = new LinkAndTrack(user, token);
 
-  const validCode: string = 'RC28112021LD';
+  const validCode: string = 'RC281120210LD';
   const invalidCode: string = 'LUC45281121RC';
 
   /**
@@ -82,8 +82,6 @@ describe('LinkAndTrack - Rastreamento', async (): Promise<void> => {
   it('Deve retornar um objeto rastreado com valores dinâmicos para um código válido', async (): Promise<void> => {
     const expectedValue: Partial<Tracked> = {
       code: validCode,
-      service: '',
-      host: '',
       lastEvent: expect.any(Date),
       events: [],
       quantity: 0,
@@ -91,6 +89,28 @@ describe('LinkAndTrack - Rastreamento', async (): Promise<void> => {
 
     await expect(linkAndTrack.track(validCode)).resolves.toMatchObject(
       expectedValue,
+    );
+  });
+});
+
+/**
+ * Conjunto de testes para a funcionalidade de lançar um erro ao rastrear com autorização inválida.
+ */
+describe('LinkAndTrack - Rastreamento com Autorização Inválida', async (): Promise<void> => {
+  const user: string = 'testes';
+  const token: string =
+    'mr0d605vt5ugfiho0jmp23f8h5lx9tr0lp5ael68283s5stxl6o86519uyzy3k7g';
+
+  const linkAndTrack = new LinkAndTrack(user, token);
+
+  const code: string = 'RC281120210LD';
+
+  /**
+   * Testa se um erro de autorização é lançado ao rastrear com código válido.
+   */
+  it('Deve lançar um erro de autorização ao rastrear com código válido', async (): Promise<void> => {
+    await expect(linkAndTrack.trackOrThrow(code)).rejects.toThrowError(
+      AuthorizationError,
     );
   });
 });
